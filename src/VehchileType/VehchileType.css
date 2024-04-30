@@ -1,0 +1,30 @@
+.VehchileTypeLogo{
+    height: 110px;
+    width: 110px;
+   
+   
+}
+
+.First{
+    background-color:rgb(243, 170, 35);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3); 
+    padding: 6px;
+    
+
+    border-radius: 6px;
+}
+.Second{
+    background-color: black;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+@media only screen and (min-width: 800px)  {
+    .VehchileTypeLogo{
+        height: 80px;
+        width: 80px;
+       
+       
+    }
+  }
+  
