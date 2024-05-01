@@ -8,6 +8,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 10px;
     border-radius: 6px;
+    font-size: 10px;
   }
   
   .info {
@@ -32,11 +33,13 @@
   .reserve-button {
     background-color: #f44336; /* Red */
     color: white;
+    font-size: 10px;
   }
   
   .available-button {
     background-color: #4caf50; /* Green */
     color: white;
+    font-size: 10px;
   }
   
   .reserve-button:hover, .available-button:hover {
@@ -61,26 +64,13 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 10px;
     border-radius: 6px;
+    font-size: 10px;
 }
-.ReserveButton {
-    background-color: #4caf50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-  }
-  
-  .ReserveButton:hover {
-    background-color: #45a049;
-  }
-  
+
+.Reserved{
+  height:   90px;
+}
+
   .ReserveButton.updating {
     background-color: #ccc; /* Grey */
     cursor: not-allowed;

@@ -1,10 +1,94 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
 import Parking from '../Parking/Parking'
+import Info from '../Context/Context'
+
 import "./Task.css"
+const Information =[
+    { id: 1, name: 'A-1', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 2, name: 'A-2', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 3, name: 'A-3', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 4, name: 'A-4', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 5, name: 'A-5', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 6, name: 'A-6', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 7, name: 'A-7', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 8, name: 'A-8', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 9, name: 'A-9', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 10, name: 'A-10', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 11, name: 'A-11', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 12, name: 'A-12', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 13, name: 'A-13', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 14, name: 'A-14', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 15, name: 'A-15', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 16, name: 'A-16', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 17, name: 'A-17', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 18, name: 'A-18', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 19, name: 'A-19', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 20, name: 'A-20', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 21, name: 'B-1', Status: "Available", VehchileType: "Car", ParkingPricePerHour:20 },
+    { id: 22, name: 'B-2', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 23, name: 'B-3', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 24, name: 'B-4', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 25, name: 'B-5', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 26, name: 'B-6', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 27, name: 'B-7', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 28, name: 'B-8', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 29, name: 'B-9', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 30, name: 'B-10', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 31, name: 'B-11', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 32, name: 'B-12', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 33, name: 'B-13', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 34, name: 'B-14', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 35, name: 'B-15', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 36, name: 'B-16', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 37, name: 'B-17', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 38, name: 'B-18', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 39, name: 'B-19', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    { id: 40, name: 'B-20', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
+    
+    { id: 41, name: 'A-1', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 42, name: 'A-2', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 43, name: 'A-3', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 44, name: 'A-4', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 45, name: 'A-5', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 46, name: 'A-6', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 47, name: 'A-7', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 48, name: 'A-8', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 49, name: 'A-9', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 50, name: 'A-10', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 51, name: 'A-11', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 52, name: 'A-12', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 53, name: 'A-13', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 56, name: 'A-16', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 57, name: 'A-17', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 58, name: 'A-18', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 59, name: 'A-19', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 60, name: 'A-20', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 61, name: 'B-1', Status: "Available", VehchileType: "Bike", ParkingPricePerHour:10 },
+    { id: 62, name: 'B-2', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 63, name: 'B-3', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 64, name: 'B-4', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 65, name: 'B-5', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 66, name: 'B-6', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 67, name: 'B-7', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 68, name: 'B-8', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 69, name: 'B-9', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 70, name: 'B-10', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 71, name: 'B-11', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 72, name: 'B-12', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 73, name: 'B-13', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 74, name: 'B-14', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 75, name: 'B-15', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 76, name: 'B-16', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 77, name: 'B-17', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 78, name: 'B-18', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 79, name: 'B-19', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    { id: 80, name: 'B-20', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
+    
+    ]
 const Task = () => {
     const [finelData, setFinelData] = useState([])
-    const [filterVehchileType,setfilterVehchileType]=useState("")
+    const { PickVehchileType, } = useContext(Info)
 
     useEffect(() => {
         GetTheData()
@@ -31,17 +115,13 @@ const Task = () => {
         try {
             const URL = "https://park-6926c-default-rtdb.firebaseio.com/Sidd.json"
 
-            const Data = await axios.post(URL, [
-                { id: 1, name: 'Slot  1', Status: "Available", VehchileType: "Car" },
-                { id: 2, name: 'Slot  2', Status: "Available", VehchileType: "Bike" },
-                { id: 3, name: 'Slot  3', Status: "Available", VehchileType: "Cycle" }
-            ])
+            const Data = await axios.post(URL, Information)
             console.log(Data)
         } catch (error) {
             console.log(error)
         }
     }
-
+    console.log(PostData)
 
     const UpdateData = async (D) => {
         const NewData = finelData.map((each) => {
@@ -58,9 +138,11 @@ const Task = () => {
             const URL = "https://park-6926c-default-rtdb.firebaseio.com/Sidd.json"
 
             const DataBase = await axios.put(URL,
-                finelData
+                NewData
             )
+
             console.log(DataBase)
+            
         } catch (error) {
             console.log(error)
         }
@@ -80,7 +162,7 @@ const Task = () => {
         try {
 
             const URL = "https://park-6926c-default-rtdb.firebaseio.com/Sidd.json"
-            const Filter = await axios.put(URL, finelData)
+            const Filter = await axios.put(URL, AvailableFilter)
             console.log(Filter)
         } catch (error) {
             console.log(error)
@@ -89,17 +171,25 @@ const Task = () => {
     }
 
 
-    const UpdateVehchileType=(e)=>{
-        setfilterVehchileType(e.target.value)
-    }
 
-const FinleUpdatedData=finelData.filter((each)=>each.VehchileType===filterVehchileType)
+
+    const FinleUpdatedData = finelData.filter((each) => each.VehchileType === PickVehchileType)
+    const ABlock = FinleUpdatedData.filter((each) => each.name.includes("A"))
+    const BBlock = FinleUpdatedData.filter((each) => each.name.includes("B"))
     return (
         <div>
-             
-   
-            <div>
-                {finelData.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}
+
+            <h1 className="SlotName">Ground Level-A</h1>
+            
+            <div className="ParkingItems">
+              
+                {ABlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}
+            </div>
+            <h1 className="SlotName">Ground Level-B</h1>
+            <div className="ParkingItems">
+
+                {BBlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}
+
             </div>
         </div>
     )

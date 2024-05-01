@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext } from 'react';
+import Info from '../Context/Context'
 import Car from '../Assets/car.gif';
 import Cycle from '../Assets/bike.gif';
 import Bike from '../Assets/cycle.gif';
@@ -26,14 +27,16 @@ const Vehchiles = [
 ];
 
 const Home = () => {
-    const [chooseType, setchooseType] = useState("Car");
+
+    const {GlobelVehchilUpdate,PickVehchileType}=useContext(Info)
 
     const ChooseTypeUpdate = (F) => {
-        setchooseType(F);
+       
+        GlobelVehchilUpdate(F)
     };
 
     const VehchileTypeMainLogo = () => {
-        switch (chooseType) {
+        switch (PickVehchileType) {
             case "Car":
                 return CarPNG;
             case "Bike":
@@ -54,7 +57,7 @@ const Home = () => {
 <h3 className='vehicle'>Pick Your Vehchile to Park</h3>
             </div>
             <div className='TypesRow'>
-                {Vehchiles.map((each) => <VehchileType key={each.Name} VehchileTypeDetails={each} MainTypeUpdate={ChooseTypeUpdate} IsActive={each.Name === chooseType} />)}
+                {Vehchiles.map((each) => <VehchileType key={each.Name} VehchileTypeDetails={each} MainTypeUpdate={ChooseTypeUpdate} IsActive={each.Name === PickVehchileType} />)}
             </div>
            
 <img className='BigLogo' src={VehchileTypeMainLogo()} alt="Car" />

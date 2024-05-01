@@ -1,0 +1,19 @@
+.PopUpMain{
+   display: flex;
+   flex-direction: column;
+    background-color: rgb(240, 179, 66);
+    height: 170px;
+    width: 160px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+}
+.Munna{
+    height: 100px;
+}
+.Close{
+    display: flex;
+    align-self: end;
+    height: 27px;
+    width: 27px;
+}
