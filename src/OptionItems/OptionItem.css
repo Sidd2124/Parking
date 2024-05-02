@@ -1,0 +1,21 @@
+.containers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 10px;
+    margin: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.RemoveLink{
+    text-decoration: none;
+}
+@media only screen and (min-width: 800px){
+.containers{
+    width: 400px;
+}
+}
+
+
+

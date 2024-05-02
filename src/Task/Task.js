@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from "react"
+import OptionItems from "../OptionItems/OptionItems"
 import axios from 'axios'
 import Parking from '../Parking/Parking'
+import Option from '../Assets/Options.png'
 import Info from '../Context/Context'
+
 
 import "./Task.css"
 const Information =[
@@ -88,7 +91,7 @@ const Information =[
     ]
 const Task = () => {
     const [finelData, setFinelData] = useState([])
-    const { PickVehchileType, } = useContext(Info)
+    const { PickVehchileType,StatusOption ,SetOptionStatus} = useContext(Info)
 
     useEffect(() => {
         GetTheData()
@@ -170,7 +173,9 @@ const Task = () => {
 
     }
 
-
+const UpdateOptionStatus=()=>{
+    SetOptionStatus()
+}
 
 
     const FinleUpdatedData = finelData.filter((each) => each.VehchileType === PickVehchileType)
@@ -178,9 +183,13 @@ const Task = () => {
     const BBlock = FinleUpdatedData.filter((each) => each.name.includes("B"))
     return (
         <div>
-
+             
+            <div className="OptionsContainer">
+                {StatusOption===false&&
+<img className="OptionsIcon" src={Option} alt="Options" onClick={UpdateOptionStatus}/>}
             <h1 className="SlotName">Ground Level-A</h1>
-            
+            </div>
+            {StatusOption&&<OptionItems/>}
             <div className="ParkingItems">
               
                 {ABlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}

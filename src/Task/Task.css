@@ -78,4 +78,12 @@
       width: 100%;
     }
   }
-  
+  .OptionsIcon{
+    height: 25px;
+  }
+
+  .OptionsContainer{
+    display: flex;
+    gap: 40px;
+    margin: 30px;
+  }
