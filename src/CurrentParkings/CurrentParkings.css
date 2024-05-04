@@ -1,0 +1,76 @@
+.CurrentTOP {
+  background-color: lightgrey;
+  padding: 20px;
+  position: absolute;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  margin: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  animation: slideFromLeft 0.5s ease forwards; 
+}
+
+@keyframes slideFromLeft {
+  from {
+      left: -100%;
+  }
+  to {
+      left: 0;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.Status {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.Status.active {
+  color: #28a745; /* Green for active status */
+}
+
+.Status.inactive {
+  color: #dc3545; /* Red for inactive status */
+}
+
+.button {
+  background-color: rgba(255, 166, 0, 0.74); /* Blue button */
+  color: white;
+  border: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  outline: none; /* Remove button outline */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

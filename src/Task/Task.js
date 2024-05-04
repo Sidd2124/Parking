@@ -153,26 +153,6 @@ const Task = () => {
     }
 
 
-    const MakeingAvailable = async (J) => {
-        const AvailableFilter = finelData.map((each) => {
-            if (each.id === J.id) {
-                return J
-            }
-            return each
-        })
-
-        setFinelData(AvailableFilter)
-        try {
-
-            const URL = "https://park-6926c-default-rtdb.firebaseio.com/Sidd.json"
-            const Filter = await axios.put(URL, AvailableFilter)
-            console.log(Filter)
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
-
 const UpdateOptionStatus=()=>{
     SetOptionStatus()
 }
@@ -192,12 +172,12 @@ const UpdateOptionStatus=()=>{
             {StatusOption&&<OptionItems/>}
             <div className="ParkingItems">
               
-                {ABlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}
+                {ABlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData}  />)}
             </div>
             <h1 className="SlotName">Ground Level-B</h1>
             <div className="ParkingItems">
 
-                {BBlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData} AvailableMakeing={MakeingAvailable} />)}
+                {BBlock.map((each) => <Parking Item={each} keys={each.id} MakeIrToReserved={UpdateData}  />)}
 
             </div>
         </div>

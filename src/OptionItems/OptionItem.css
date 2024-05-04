@@ -7,6 +7,19 @@
     border-radius: 10px;
     margin: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    animation: slideFromRight 0.5s ease-in-out forwards;
+
+}
+
+
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 .RemoveLink{
     text-decoration: none;

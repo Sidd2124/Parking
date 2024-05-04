@@ -1,6 +1,6 @@
-.PopUpMain{
-   display: flex;
-   flex-direction: column;
+.PopUpMain {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(240, 179, 66);
     height: 170px;
     width: 160px;
@@ -8,12 +8,14 @@
     padding: 10px;
     border-radius: 6px;
 }
-.Munna{
+
+.Munna {
     height: 100px;
 }
-.Close{
+
+.Close {
     display: flex;
-    align-self: end;
+    align-self: flex-end;
     height: 27px;
     width: 27px;
 }
