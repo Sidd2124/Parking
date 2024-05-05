@@ -72,6 +72,12 @@
       transform: translateY(0);
     }
   }
+
+  .HomeIcon{
+    height: 50px;
+    display: flex;
+    justify-content: end;
+  }
   
   @media (max-width: 600px) {
     .dropdown {

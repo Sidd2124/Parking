@@ -4,9 +4,11 @@ import axios from 'axios'
 import Parking from '../Parking/Parking'
 import Option from '../Assets/Options.png'
 import Info from '../Context/Context'
+import HomeIcon from '../Assets/home.gif'
 
 
 import "./Task.css"
+import { Link } from "react-router-dom/cjs/react-router-dom.min"
 const Information =[
     { id: 1, name: 'A-1', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
     { id: 2, name: 'A-2', Status: "Available", VehchileType: "Car",ParkingPricePerHour:20 },
@@ -88,6 +90,47 @@ const Information =[
     { id: 79, name: 'B-19', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
     { id: 80, name: 'B-20', Status: "Available", VehchileType: "Bike",ParkingPricePerHour:10 },
     
+    
+    { id: 81, name: 'A-1', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5},
+    { id: 82, name: 'A-2', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 83, name: 'A-3', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 84, name: 'A-4', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 85, name: 'A-5', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 86, name: 'A-6', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 87, name: 'A-7', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 88, name: 'A-8', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 89, name: 'A-9', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 90, name: 'A-10', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 91, name: 'A-11', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 92, name: 'A-12', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 93, name: 'A-13', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 96, name: 'A-16', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 97, name: 'A-17', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 98, name: 'A-18', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 99, name: 'A-19', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 100, name: 'A-20', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 101, name: 'B-1', Status: "Available", VehchileType: "Cycle", ParkingPricePerHour:5 },
+    { id: 102, name: 'B-2', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 103, name: 'B-3', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 104, name: 'B-4', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 105, name: 'B-5', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 106, name: 'B-6', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 107, name: 'B-7', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 108, name: 'B-8', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 109, name: 'B-9', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 110, name: 'B-10', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 111, name: 'B-11', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 112, name: 'B-12', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 113, name: 'B-13', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 114, name: 'B-14', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 115, name: 'B-15', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 116, name: 'B-16', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 117, name: 'B-17', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 118, name: 'B-18', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 119, name: 'B-19', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    { id: 120, name: 'B-20', Status: "Available", VehchileType: "Cycle",ParkingPricePerHour:5 },
+    
+    
     ]
 const Task = () => {
     const [finelData, setFinelData] = useState([])
@@ -165,9 +208,13 @@ const UpdateOptionStatus=()=>{
         <div>
              
             <div className="OptionsContainer">
+                
                 {StatusOption===false&&
 <img className="OptionsIcon" src={Option} alt="Options" onClick={UpdateOptionStatus}/>}
             <h1 className="SlotName">Ground Level-A</h1>
+            <Link to="/">
+            <img src={HomeIcon} alt="HomeIcon" className="HomeIcon"/>
+            </Link>
             </div>
             {StatusOption&&<OptionItems/>}
             <div className="ParkingItems">

@@ -74,3 +74,26 @@ p {
 .button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+
+.ParkingLogo{
+  height: 200px;
+}
+.NoBookings{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+.Zero{
+  height: 500px;
+  width: 400px;
+}
+
+.Book{
+  border: solid 1px green;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 6px;
+  padding: 10px;
+}

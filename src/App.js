@@ -13,10 +13,23 @@ function App() {
   const [finelVehileType,setfinelVehileType]=useState("Car")
   const[notificationStatus,setnotificationStatus]=useState(false)
   const [optionStatus,setOptionStatus]=useState(false)
-  const [currentBookingInfo,setcurrentBookingInfo]=useState( JSON.parse(localStorage.getItem("CurrentInLocal")))
+  const [currentBookingInfo,setcurrentBookingInfo]=useState( {})
+  const [previousBooking,setPreviousBookings]=useState([])
 
+useEffect(()=>{
+const Make=localStorage.getItem("PreviousBookings")
+if(Make){
+  setPreviousBookings(JSON.parse(Make))
+}
+},[])
 
-  
+  useEffect(()=>{
+    const DataFromLocalStorage=localStorage.getItem("CurrentInLocal")
+    if(DataFromLocalStorage){
+      setcurrentBookingInfo(JSON.parse(DataFromLocalStorage))
+    }
+   
+  },[])
   
   
 
@@ -38,8 +51,13 @@ function App() {
   const UpdateOptionStatus=()=>{
     setOptionStatus(!optionStatus)
   }
+
+  const PreviouseParkingUpdate=(O)=>{
+    localStorage.setItem("PreviousBookings",JSON.stringify([...previousBooking,O]))
+    setPreviousBookings(JSON.parse(localStorage.getItem("PreviousBookings")))
+  }
   return (
-<Info.Provider value={{PickVehchileType:finelVehileType,GlobelVehchilUpdate:GlobelUpdate,WarningStatus:notificationStatus,Closeing:Finishing,Fix:Fixed,StatusOption:optionStatus,SetOptionStatus:UpdateOptionStatus,CurrentBookings:currentBookingInfo}}>
+<Info.Provider value={{PickVehchileType:finelVehileType,GlobelVehchilUpdate:GlobelUpdate,WarningStatus:notificationStatus,Closeing:Finishing,Fix:Fixed,StatusOption:optionStatus,SetOptionStatus:UpdateOptionStatus,CurrentBookings:currentBookingInfo,PreviousBooking:previousBooking,AddtopreviouseParking:PreviouseParkingUpdate}}>
     <div className="App">
       <BrowserRouter>
         <Switch>
